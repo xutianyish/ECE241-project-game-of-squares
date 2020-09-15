@@ -1,4 +1,4 @@
-## ECE241-project-game-of-squares
+## ECE241 Final Project
 
 |                                              |                                          |
 |:---------------------------: | --------------------------------------------------------------|                         
@@ -32,7 +32,9 @@ The display module consists of two parts: the vga_inputs module(Appendix A) and 
 
 The Audio module is divided into three components: the bgm_inputs module(Appendix B), the se_inputs module(Appendix C) and the Audio Controller module. First, the source file is stored into a memory chip in its analog format through the process of sampling. After that, the bgm_inputs module and the se_inputs module provides the sequences of the samples at a specific frequency that coincides with the sample rate. Upon receiving the addition of the sound outputs, the audio controller transmits the data serially to the audio chip and the data is fed directly to the DACs. DACs further converts the numbers into analog voltage which can drive the headphones.
 
- 
+<p align="center">
+<img src=/images/figure2.png>
+</p> 
 <p align="center">Figure 2. Audio Controller and input logic
 </p>
 
@@ -40,27 +42,43 @@ The Audio module is divided into three components: the bgm_inputs module(Appendi
 
 The keyboard module is used to communicate with a PS2 keyboard. Its main functionality is to translate user inputs into a set of outputs. They are fed directly into the audio and display module. This module consists of a decoder, two registers and a PS2 controller. The PS2 controller provides an interface to the PS/2 protocol, handling the data transmission and the timing control. As the enable signal is sent by the PS2 controller, the last data and the second last data are captured and used by the decoder to generate five 1-bit outputs, which then become the inputs to the audio and the display module.
 
+<p align="center">
+<img src=/images/figure3.png>
+</p>
 <p align="center">Figure 3. PS2 Keyboard Controller
 </p>
 
 ### 3.0  Report on Success
 ●	Display 
 ○	The start display depicts the title, “Game of Squares”, every time the game is launched or restarted
-                   
+        
+<p align="center">
+<img src=/images/figure4.png>
+</p>
 <p align="center">Figure 4.  Start Display
 </p>
 
 ○	The instruction page explains the mapping of softkeys 
-                 
+
+<p align="center">
+<img src=/images/figure5.png>
+</p>
 <p align="center">Figure 5. Instruction Page
 </p>
 
 ○	The end display depicts “Game clear” when the game is cleared
-        
+
+<p align="center">
+<img src=/images/figure6.png>
+</p>
 <p align="center">Figure 6. End Display
 </p>
 
 ○	Display the correct information when the square is selected and the move is confirmed
+
+<p align="center">
+<img src=/images/figure7.png>
+</p>
 <p align="center">Figure 7.  Active Screen
 </p>
 
@@ -83,10 +101,16 @@ We also learned that we need to do enough research and figure out what we really
 Appendix A: vga_inputs module
 
 The vga_inputs module (Figure 8) consists of a finite state machine(Figure 9), which is responsible for manipulating the datapath once instructions are received from players, and a datapath, that stores the current progress of the game and produces a set of outputs based on the current state. The Information stored in datapath is current cursor position, previous cursor position, current board colour, start, end, and instruction display.
- 
+
+<p align="center">
+<img src=/images/figure8.png>
+</p>
 <p align="center">Figure 8. vga_inputs module
 </p>
- 
+
+<p align="center">
+<img src=/images/figure9.png>
+</p>
 <p align="center">Figure 9. FSM for vga_inputs module
 </p>  
   
@@ -94,9 +118,15 @@ Appendix B: bgm_inputs module
 
 The bgm_inputs module(Figure 10) is responsible for generating a 32-bit sound output as the go key is pressed by the player. The source file is analyzed and resampled at 2400Hz using MATLAB and a memory initialization file is created to initialize a memory block on the chip. Upon receiving the go signal, the finite state machine(Figure 11) in this module allows the address counter in the datapath to loop through the samples at a certain frequency. The output is then connected to the audio controller to produce the background music.
 
+<p align="center">
+<img src=/images/figure10.png>
+</p>
 <p align="center">Figure 10. bgm_inputs module
 </p> 
- 
+
+<p align="center">
+<img src=/images/figure11.png>
+</p>
 <p align="center">Figure 11. FSM for bgm_inputs module
 </p>
 
@@ -104,8 +134,14 @@ Appendix C: SE_inputs module
 
 The SE_inputs module(Figure 12) consists of a control module, that receives a go signal, and a datapath, that produces a 32-bit sound output. Receiving the five input signals, the module first combines them into a go signal and then feed it into the finite state machine(Figure 13). After that, the control enables the address counter in datapath which loop through the samples of the source file stored in a memory block. Eventually, these samples are fed into the audio controller that produces different voltages based on the input signals.
  
+<p align="center">
+<img src=/images/figure12.png>
+</p>
 <p align="center">Figure 12. SE_inputs module
 </p>
- 
+
+<p align="center">
+<img src=/images/figure13.png>
+</p>
 <p align="center">Figure 13.  FSM for SE_inputs module
 </p>
