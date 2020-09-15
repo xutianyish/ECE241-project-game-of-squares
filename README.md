@@ -4,8 +4,6 @@
 |:---------------------------: | --------------------------------------------------------------|                         
 |Project Title               | game of squares                                                 |
 |Date                        | December 2, 2017                                                |   
-|<p>Group Members<br>(Name  Student Number)</p>| <p>Tianyi(Nora) Xu  1003130809<br> Chenhao Liu 1002996332 </p>|
-
 
 ### 1.0 Introduction
 
