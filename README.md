@@ -21,7 +21,10 @@ This project contains three sub-modules, which are display, audio and keyboard. 
 #### 2.1 Display
 
 The display module consists of two parts: the vga_inputs module(Appendix A) and the VGA adapter module. They are responsible for converting instructions of the player to the video memory of the screen. The finite state machine in the vga_inputs module manipulates the datapath to produce values of inputs for X, Y, and plot at different states. After receiving the inputs, the VGA adapter updates the video memory of the screen and the data inside the memory is displayed through a monitor.
- 
+
+<p align="center">
+<img src=/images/figure1.png>
+</p>
 <p align="center">Figure 1. VGA adapter and input logic
 </p>
 
